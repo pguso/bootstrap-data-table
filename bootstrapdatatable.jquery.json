@@ -1,5 +1,5 @@
 {
-    "name": "bootstrap-data-table",
+    "name": "bootstrapdatatable",
     "title": "Bootstrap Data Table Plugin",
     "description": "jQuery plugin for sorting, paginating and searching tables.",
     "keywords": [
@@ -31,6 +31,6 @@
     "download": "https://github.com/pguso/bootstrap-data-table/archive/master.zip",
     "dependencies": {
         "jquery": ">=1.5",
-        "bootstrap": ">=3.*"
+        "bootstrap": ">=3.0.0"
     }
 }
