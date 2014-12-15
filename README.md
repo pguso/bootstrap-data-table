@@ -26,3 +26,10 @@ Turn your table into a bootstrap data table
         $('#bootstrap-table').bdt();
     });
     </script>
+
+Available Options
+-----------------
+
+- pageRowCount / initial row count per page / default is 10
+- arrowDown / font awesome arrow down icon / default is "fa-angle-down"
+- arrowUp / font awesome arrow up icon / default is "fa-angle-up"
