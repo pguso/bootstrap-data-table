@@ -1,0 +1,13 @@
+{
+  "name": "bootstrap-data-table",
+  "version": "1.0.0",
+  "homepage": "http://bdt.gutersohn.biz",
+  "authors": [
+    "Patric Gutersohn <pguso@gmx.de>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">=1.5",
+    "bootstrap": ">=3.*"
+  }
+}
