@@ -40,3 +40,7 @@ Available Options
 - pageRowCount / initial row count per page / default is 10
 - arrowDown / font awesome arrow down icon / default is "fa-angle-down"
 - arrowUp / font awesome arrow up icon / default is "fa-angle-up"
+ 
+Disable sorting for several columns with the css class disable-sorting
+
+    <th class="disable-sorting">#ID</th>
