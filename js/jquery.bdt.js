@@ -46,13 +46,28 @@
      * @type {string}
      */
     var arrowDown = '';
+    /**
+     * @type {string}
+     */
+    var searchFormClass = '';
+    /**
+     * @type {string}
+     */
+    var pageFieldText = '';
+    /**
+     * @type {string}
+     */
+    var searchFieldText = '';
 
     $.fn.bdt = function (options, callback) {
 
         var settings = $.extend({
             pageRowCount: 10,
             arrowDown: 'fa-angle-down',
-            arrowUp: 'fa-angle-up'
+            arrowUp: 'fa-angle-up',
+            searchFormClass: 'pull-left search-form',
+            pageFieldText: 'Entries per Page:',
+            searchFieldText: 'Search'
         }, options);
 
         /**
@@ -66,32 +81,31 @@
             pageRowCount = settings.pageRowCount;
             arrowDown = settings.arrowDown;
             arrowUp = settings.arrowUp;
+            searchFormClass = settings.searchFormClass;
+            pageFieldText = settings.pageFieldText;
+            searchFieldText = settings.searchFieldText;
 
             /**
              * search input field
              */
             obj.before(
-                $('<form/>')
-                    .addClass('pull-right')
-                    .attr('role', 'form')
+                $('<div/>')
+                    .addClass('table-header')
                     .append(
-                        $('<div/>')
-                            .addClass('form-group')
+                        $('<form/>')
+                            .addClass(searchFormClass)
+                            .attr('role', 'form')
                             .append(
-                                $('<input/>')
-                                    .addClass('form-control')
-                                    .attr('id', 'search')
-                                    .attr('placeholder', 'Search...')
+                                $('<div/>')
+                                    .addClass('form-group')
+                                    .append(
+                                        $('<input/>')
+                                            .addClass('form-control')
+                                            .attr('id', 'search')
+                                            .attr('placeholder', searchFieldText)
+                                    )
                             )
                     )
-            );
-
-            /**
-             * select field for changing row per page
-             */
-            obj.after(
-                $('<div/>')
-                    .attr('id', 'table-footer')
                     .append(
                         $('<div/>')
                             .addClass('pull-left')
@@ -101,7 +115,7 @@
                                     .attr('id', 'page-rows-form')
                                     .append($('<label/>')
                                         .addClass('pull-left control-label')
-                                        .text('Entries per Page:')
+                                        .text(pageFieldText)
                                     )
                                     .append(
                                         $('<div/>')
@@ -144,6 +158,20 @@
                                     )
                             )
                     )
+            );
+
+            /**
+             * select field for changing row per page
+             */
+            obj.after(
+                $('<div/>')
+                    .attr('id', 'table-footer')
+                    .append(
+                        $('<div/>')
+                            .addClass('pull-left table-info')
+                            //.text('Showing 1 to 10 of 100 entries')
+                    )
+                    
             );
 
             if (tableBody.children('tr').length > pageRowCount) {
