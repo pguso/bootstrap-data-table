@@ -12,6 +12,10 @@
     padding-left: 5px;
 }
 
+.search-form {
+    margin-right: 25px;
+}
+
 #table-footer {
     margin-bottom: 15px;
 }
