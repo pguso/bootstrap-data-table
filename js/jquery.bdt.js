@@ -405,9 +405,9 @@
          */
         function setPageCount(tableBody) {
             if (activeSearch) {
-                pageCount = Math.round(tableBody.children('.search-item').length / pageRowCount);
+                pageCount = Math.ceil(tableBody.children('.search-item').length / pageRowCount);
             } else {
-                pageCount = Math.round(tableBody.children('tr').length / pageRowCount);
+                pageCount = Math.ceil(tableBody.children('tr').length / pageRowCount);
             }
 
             if (pageCount == 0) {
