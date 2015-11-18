@@ -4,7 +4,7 @@
  * @copyright 2014 Patric Gutersohn
  * @author Patric Gutersohn
  * @example index.html BDT in action.
- * @link http://bdt.gutersohn.biz Documentation
+ * @link http://bdt.pguso.de Documentation
  * @version 1.0.0
  *
  * @summary BDT - Bootstrap Data Tables
