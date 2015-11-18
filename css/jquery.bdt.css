@@ -36,3 +36,7 @@
 #table-footer .pagination li:not(.active) {
     cursor: pointer;
 }
+
+.disable-sorting {
+    cursor: auto !important;
+}

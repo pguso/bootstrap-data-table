@@ -235,48 +235,49 @@
                     var addOrRemove = true;
 
                     th.click(function () {
+                        if(!$(this).hasClass('disable-sorting')) {
+                            if($(this).find('.sort-icon').hasClass(arrowDown)) {
+                                $(this)
+                                    .find('.sort-icon')
+                                    .removeClass( arrowDown )
+                                    .addClass(arrowUp);
 
-                        if($(this).find('.sort-icon').hasClass(arrowDown)) {
-                            $(this)
-                                .find('.sort-icon')
-                                .removeClass( arrowDown )
-                                .addClass(arrowUp);
+                            } else {
+                                $(this)
+                                    .find('.sort-icon')
+                                    .removeClass( arrowUp )
+                                    .addClass(arrowDown);
+                            }
 
-                        } else {
-                            $(this)
-                                .find('.sort-icon')
-                                .removeClass( arrowUp )
-                                .addClass(arrowDown);
+                            if(oldIndex != thIndex) {
+                                obj.find('.sort-icon').removeClass(arrowDown);
+                                obj.find('.sort-icon').removeClass(arrowUp);
+
+                                $(this)
+                                    .find('.sort-icon')
+                                    .toggleClass( arrowDown, addOrRemove );
+                            }
+
+                            table.find('td').filter(function () {
+
+                                return $(this).index() === thIndex;
+
+                            }).sortElements(function (a, b) {
+
+                                return $.text([a]) > $.text([b]) ?
+                                    inverse ? -1 : 1
+                                    : inverse ? 1 : -1;
+
+                            }, function () {
+
+                                // parentNode is the element we want to move
+                                return this.parentNode;
+
+                            });
+
+                            inverse = !inverse;
+                            oldIndex = thIndex;
                         }
-
-                        if(oldIndex != thIndex) {
-                            obj.find('.sort-icon').removeClass(arrowDown);
-                            obj.find('.sort-icon').removeClass(arrowUp);
-
-                            $(this)
-                                .find('.sort-icon')
-                                .toggleClass( arrowDown, addOrRemove );
-                        }
-
-                        table.find('td').filter(function () {
-
-                            return $(this).index() === thIndex;
-
-                        }).sortElements(function (a, b) {
-
-                            return $.text([a]) > $.text([b]) ?
-                                inverse ? -1 : 1
-                                : inverse ? 1 : -1;
-
-                        }, function () {
-
-                            // parentNode is the element we want to move
-                            return this.parentNode;
-
-                        });
-
-                        inverse = !inverse;
-                        oldIndex = thIndex;
                     });
 
                 });
