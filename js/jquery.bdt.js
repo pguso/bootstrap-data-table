@@ -209,6 +209,8 @@
                 if (!listItem.hasClass("disabled") && !listItem.hasClass("active")) {
                     paginate(tableBody, page);
                 }
+
+                event.preventDefault();
             });
 
             $('#page-rows-form').on('change', function () {
