@@ -67,7 +67,9 @@
             arrowUp: 'fa-angle-up',
             searchFormClass: 'pull-left search-form',
             pageFieldText: 'Entries per Page:',
-            searchFieldText: 'Search'
+            searchFieldText: 'Search',
+            showSearchForm: 1,
+            showEntriesPerPageField: 1
         }, options);
 
         /**
@@ -84,78 +86,88 @@
             searchFormClass = settings.searchFormClass;
             pageFieldText = settings.pageFieldText;
             searchFieldText = settings.searchFieldText;
+            
+            var searchForm, entriesPerPageField;
 
             /**
              * search input field
              */
-            obj.before(
-                $('<div/>')
-                    .addClass('table-header')
+            if(settings.showSearchForm == 1) {
+                searchForm = $('<form/>')
+                    .addClass(searchFormClass)
+                    .attr('role', 'form')
                     .append(
-                        $('<form/>')
-                            .addClass(searchFormClass)
-                            .attr('role', 'form')
+                        $('<div/>')
+                            .addClass('form-group')
                             .append(
-                                $('<div/>')
-                                    .addClass('form-group')
-                                    .append(
-                                        $('<input/>')
-                                            .addClass('form-control')
-                                            .attr('id', 'search')
-                                            .attr('placeholder', searchFieldText)
-                                    )
+                                $('<input/>')
+                                    .addClass('form-control')
+                                    .attr('id', 'search')
+                                    .attr('placeholder', searchFieldText)
                             )
+                    );
+            }
+
+            if(settings.showEntriesPerPageField == 1) {
+                entriesPerPageField = $('<form/>')
+                    .addClass('form-horizontal')
+                    .attr('id', 'page-rows-form')
+                    .append($('<label/>')
+                        .addClass('pull-left control-label')
+                        .text(pageFieldText)
                     )
                     .append(
                         $('<div/>')
                             .addClass('pull-left')
                             .append(
-                                $('<form/>')
-                                    .addClass('form-horizontal')
-                                    .attr('id', 'page-rows-form')
-                                    .append($('<label/>')
-                                        .addClass('pull-left control-label')
-                                        .text(pageFieldText)
+                                $('<select/>')
+                                    .addClass('form-control')
+                                    .append(
+                                        $('<option>', {
+                                            value: 5,
+                                            text: 5
+                                        })
                                     )
                                     .append(
-                                        $('<div/>')
-                                            .addClass('pull-left')
-                                            .append(
-                                                $('<select/>')
-                                                    .addClass('form-control')
-                                                    .append(
-                                                        $('<option>', {
-                                                            value: 5,
-                                                            text: 5
-                                                        })
-                                                    )
-                                                    .append(
-                                                        $('<option>', {
-                                                            value: 10,
-                                                            text: 10,
-                                                            selected: 'selected'
-                                                        })
-                                                    )
-                                                    .append(
-                                                        $('<option>', {
-                                                            value: 15,
-                                                            text: 15
-                                                        })
-                                                    )
-                                                    .append(
-                                                        $('<option>', {
-                                                            value: 20,
-                                                            text: 20
-                                                        })
-                                                    )
-                                                    .append(
-                                                        $('<option>', {
-                                                            value: 25,
-                                                            text: 25
-                                                        })
-                                                    )
-                                            )
+                                        $('<option>', {
+                                            value: 10,
+                                            text: 10,
+                                            selected: 'selected'
+                                        })
                                     )
+                                    .append(
+                                        $('<option>', {
+                                            value: 15,
+                                            text: 15
+                                        })
+                                    )
+                                    .append(
+                                        $('<option>', {
+                                            value: 20,
+                                            text: 20
+                                        })
+                                    )
+                                    .append(
+                                        $('<option>', {
+                                            value: 25,
+                                            text: 25
+                                        })
+                                    )
+                            )
+                    );
+            }
+            
+            obj.before(
+                $('<div/>')
+                    .addClass('table-header')
+                    .append(
+                        searchForm
+                    )
+                    .append(
+                        $('<div/>')
+                            .addClass('pull-left')
+                            .append(
+                                entriesPerPageField
                             )
                     )
             );
