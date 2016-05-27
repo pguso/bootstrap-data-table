@@ -69,7 +69,9 @@
             pageFieldText: 'Entries per Page:',
             searchFieldText: 'Search',
             showSearchForm: 1,
-            showEntriesPerPageField: 1
+            showEntriesPerPageField: 1,
+            nextText: 'Next',
+            previousText: 'Previous'
         }, options);
 
         /**
@@ -349,7 +351,7 @@
                                                 .append(
                                                     $('<span/>')
                                                         .addClass('sr-only')
-                                                        .text('Previous')
+                                                        .text(settings.previousText)
                                                 )
                                         )
                                 )
@@ -367,7 +369,7 @@
                                                 .append(
                                                     $('<span/>')
                                                         .addClass('sr-only')
-                                                        .text('Next')
+                                                        .text(settings.nextText)
                                                 )
                                         )
                                 )
